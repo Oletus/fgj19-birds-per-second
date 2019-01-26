@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 153073be006bada4da84b3c477798437, type: 2}
   m_HaloStrength: 0.504
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.58872074, g: 0.60961735, b: 0.6189931, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -416,8 +416,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4f04f2875f575547a0188817c1e0183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!4 &138040327 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2417849353867215149, guid: 07eb073b5c090fe498ceda3968751463,
@@ -473,8 +473,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -490,8 +490,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
@@ -764,8 +764,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4f04f2875f575547a0188817c1e0183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &341203169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1243,8 +1243,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 932313ef8f2ce54eab061c6025d5f660, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   sc: {fileID: 8104310516060328676, guid: dd724b7c07c051a28a675516e409c57f, type: 3}
 --- !u!4 &518914805
 Transform:
@@ -1507,8 +1507,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4f04f2875f575547a0188817c1e0183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &656861542
 GameObject:
   m_ObjectHideFlags: 0
@@ -1822,8 +1822,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   volumeTrigger: {fileID: 959365289}
   volumeLayer:
     serializedVersion: 2
@@ -2144,8 +2144,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
@@ -2790,7 +2790,7 @@ PrefabInstance:
     - target: {fileID: 9121458879661796628, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: m_audioClip
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: b4215567836770e4c8d44e8877bb3d44, type: 3}
     - target: {fileID: 243047627147287684, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
@@ -3066,7 +3066,7 @@ PrefabInstance:
     - target: {fileID: 9121458879661796628, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: m_audioClip
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: 7854da8362e58b041b0b88eb6f4df0f9, type: 3}
     - target: {fileID: 243047627147287684, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
@@ -3091,8 +3091,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4f04f2875f575547a0188817c1e0183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &1447201491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3403,7 +3403,7 @@ PrefabInstance:
     - target: {fileID: 9121458879661796628, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: m_audioClip
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: b5db45985e7a27648aba4b74bdd24161, type: 3}
     - target: {fileID: 243047627147287684, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
@@ -3428,8 +3428,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4f04f2875f575547a0188817c1e0183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &1612285352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3510,7 +3510,7 @@ PrefabInstance:
     - target: {fileID: 9121458879661796628, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: m_audioClip
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: e867148ef240f01418fc614a8f20c95b, type: 3}
     - target: {fileID: 243047627147287684, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
@@ -3960,8 +3960,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -3979,8 +3979,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
@@ -4458,7 +4458,7 @@ PrefabInstance:
     - target: {fileID: 9121458879661796628, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: m_audioClip
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: 5775a4249770346438ad2033649d2473, type: 3}
     - target: {fileID: 243047627147287684, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
@@ -4483,8 +4483,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4f04f2875f575547a0188817c1e0183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &1955952568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4865,7 +4865,7 @@ PrefabInstance:
     - target: {fileID: 9121458879661796628, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: m_audioClip
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: 9a1c14131e223de42ae377e2df7f96cd, type: 3}
     - target: {fileID: 243047627147287684, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
@@ -4944,32 +4944,32 @@ PrefabInstance:
     - target: {fileID: 3294886981288781107, guid: 21c0ba9e07cb32944a4e05e34a84c4b4,
         type: 3}
       propertyPath: PlacedObjects.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 138040326}
     - target: {fileID: 3294886981288781107, guid: 21c0ba9e07cb32944a4e05e34a84c4b4,
         type: 3}
       propertyPath: PlacedObjects.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 1407634374}
     - target: {fileID: 3294886981288781107, guid: 21c0ba9e07cb32944a4e05e34a84c4b4,
         type: 3}
       propertyPath: PlacedObjects.Array.data[2]
-      value: 
+      value:
       objectReference: {fileID: 1608157565}
     - target: {fileID: 3294886981288781107, guid: 21c0ba9e07cb32944a4e05e34a84c4b4,
         type: 3}
       propertyPath: PlacedObjects.Array.data[3]
-      value: 
+      value:
       objectReference: {fileID: 644412524}
     - target: {fileID: 3294886981288781107, guid: 21c0ba9e07cb32944a4e05e34a84c4b4,
         type: 3}
       propertyPath: PlacedObjects.Array.data[4]
-      value: 
+      value:
       objectReference: {fileID: 330743921}
     - target: {fileID: 3294886981288781107, guid: 21c0ba9e07cb32944a4e05e34a84c4b4,
         type: 3}
       propertyPath: PlacedObjects.Array.data[5]
-      value: 
+      value:
       objectReference: {fileID: 1930392860}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21c0ba9e07cb32944a4e05e34a84c4b4, type: 3}
