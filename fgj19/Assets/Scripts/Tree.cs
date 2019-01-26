@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int _Height;
 
-    // Update is called once per frame
-    void Update()
+    public float GetWidthAtHeight(int height)
     {
-        
+        return 1.0f;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 [ExecuteAlways]
 public class Birdhouse : MonoBehaviour
 {
-    [SerializeField] private BirdhouseConfig Config;
+    [SerializeField] private GridConfig Config;
 
     public enum State
     {
