@@ -27,7 +27,7 @@ public class BirdhouseSegment : MonoBehaviour
         }
     }
 
-    bool Matches(BirdhouseSegment other)
+    public bool Matches(BirdhouseSegment other)
     {
         return _BaseColorIndex == other._BaseColorIndex;
     }

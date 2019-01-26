@@ -15,12 +15,12 @@ public class Birdhouse : MonoBehaviour
         AttachedToTree
     }
 
-    private List<BirdhouseSegment> Segments;
+    public List<BirdhouseSegment> Segments;
     public int SegmentCount { get { return (Segments != null) ? Segments.Count : 0; } }
     private AudioSource AudioSource;
 
-    private int PlacementGridY;
-    private bool OnRightSide;
+    public int PlacementGridY;
+    public bool OnRightSide;
     private Light Light;
 
     // Start is called before the first frame update
