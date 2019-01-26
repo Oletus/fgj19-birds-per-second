@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Height: 0
-  _MaxBirdhouses: 1
+  _MaxBirdhouses: 2
   Birdhouses: []
 --- !u!1 &4613470630463109650
 GameObject:
