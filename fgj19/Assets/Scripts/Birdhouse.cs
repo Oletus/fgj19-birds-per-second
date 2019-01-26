@@ -16,7 +16,11 @@ public class Birdhouse : MonoBehaviour
     }
 
     private List<BirdhouseSegment> Segments;
+    public int SegmentCount { get { return (Segments != null) ? Segments.Count : 0; } }
     private AudioSource AudioSource;
+
+    private int PlacementGridY;
+    private bool OnRightSide;
 
     // Start is called before the first frame update
     void Awake()
@@ -47,6 +51,22 @@ public class Birdhouse : MonoBehaviour
         }
 
         // Gameplay logic here.
+    }
+
+    public bool Intersects(int otherSegmentCount, int otherGridY, bool otherOnRightSide)
+    {
+        if ( otherOnRightSide != OnRightSide )
+        {
+            return false;
+        }
+        return (otherGridY + otherSegmentCount > PlacementGridY && PlacementGridY + SegmentCount > otherGridY);
+    }
+
+    public void SetAttachedTransform(Tree tree, int placementGridY, bool onRightSide, bool preview)
+    {
+        PlacementGridY = placementGridY;
+        OnRightSide = onRightSide;
+        transform.position = tree.GetAttachmentPosition(placementGridY, onRightSide, preview);
     }
 
     public void OnAttached()

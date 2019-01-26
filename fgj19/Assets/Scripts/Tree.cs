@@ -17,24 +17,15 @@ public class Tree : MonoBehaviour
         Birdhouses = new List<Birdhouse>();
     }
 
-    private float GetWidthAtHeight(int height)
+    private float GetWidthAtY(int y)
     {
         return 1.0f;
     }
 
-    public bool CanBeAttached(Birdhouse house, int placementHeight, bool onRightSide)
+    public Vector3 GetAttachmentPosition(int placementY, bool onRightSide, bool preview = false)
     {
-        if (Birdhouses.Count >= _MaxBirdhouses)
-        {
-            return false;
-        }
-        return true;
-    }
-
-    private void SetAttachedObjectTransform(Birdhouse house, int placementHeight, bool onRightSide, bool preview)
-    {
-        float y = GlobalConfig.Instance.GridConfig.SegmentHeight * placementHeight;
-        float horizontalOffset = GetWidthAtHeight(placementHeight) * 0.5f - 0.05f;
+        float y = GlobalConfig.Instance.GridConfig.SegmentHeight * placementY;
+        float horizontalOffset = GetWidthAtY(placementY) * 0.5f - 0.05f;
         if ( preview )
         {
             horizontalOffset += 0.3f;
@@ -44,17 +35,33 @@ public class Tree : MonoBehaviour
             horizontalOffset = -horizontalOffset;
         }
 
-        house.transform.position = transform.position + Vector3.up * y + Vector3.right * horizontalOffset + Vector3.back * 0.6f;
+        return transform.position + Vector3.up * y + Vector3.right * horizontalOffset + Vector3.back * 0.6f;
     }
 
-    public void PreviewBirdhouse(Birdhouse house, int placementHeight, bool onRightSide)
+    public bool CanBeAttached(int segmentCount, int placementGridY, bool onRightSide)
     {
-        SetAttachedObjectTransform(house, placementHeight, onRightSide, true);
+        if (Birdhouses.Count >= _MaxBirdhouses)
+        {
+            return false;
+        }
+        foreach ( Birdhouse house in Birdhouses )
+        {
+            if ( house.Intersects(segmentCount, placementGridY, onRightSide) )
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
-    public void AttachBirdhouse(Birdhouse house, int placementHeight, bool onRightSide)
+    public void PreviewBirdhouse(Birdhouse house, int placementGridY, bool onRightSide)
     {
-        SetAttachedObjectTransform(house, placementHeight, onRightSide, false);
+        house.SetAttachedTransform(this, placementGridY, onRightSide, true);
+    }
+
+    public void AttachBirdhouse(Birdhouse house, int placementGridY, bool onRightSide)
+    {
+        house.SetAttachedTransform(this, placementGridY, onRightSide, false);
         Birdhouses.Add(house);
         house.OnAttached();
     }

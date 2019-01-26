@@ -35,22 +35,22 @@ public class TreePositionSelect : MonoBehaviour
         float cursorWorldYOffset = hitInfo.point.y - tree.transform.position.y;
         int cursorGridHeight = Mathf.RoundToInt(cursorWorldYOffset / GridConfig.SegmentHeight);
 
-        int placementHeight = Mathf.Max(GridConfig.MinPlacementHeight, Mathf.Min(MaxPlacementHeight, cursorGridHeight));
+        int placementGridY = Mathf.Max(GridConfig.MinPlacementHeight, Mathf.Min(MaxPlacementHeight, cursorGridHeight));
 
         bool onRightSide = hitInfo.point.x > tree.transform.position.x;
 
-        if ( tree.CanBeAttached(PlacedObject, placementHeight, onRightSide) )
+        if ( tree.CanBeAttached(PlacedObject.SegmentCount, placementGridY, onRightSide) )
         {
             if ( Input.GetMouseButtonDown(0) )
             {
                 PlacedObject.gameObject.SetActive(true);
-                tree.AttachBirdhouse(PlacedObject, placementHeight, onRightSide);                
+                tree.AttachBirdhouse(PlacedObject, placementGridY, onRightSide);                
                 PlacedObject = null;
                 return false;
             }
             else
             {
-                tree.PreviewBirdhouse(PlacedObject, placementHeight, onRightSide);
+                tree.PreviewBirdhouse(PlacedObject, placementGridY, onRightSide);
             }
             return true;
         }
