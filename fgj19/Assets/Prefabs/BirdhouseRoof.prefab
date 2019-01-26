@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BaseColorIndex: 0
   BaseColorPalette: {fileID: 0}
-  IsRoof: 0
+  IsRoof: 1
 --- !u!1 &6073148954571073775
 GameObject:
   m_ObjectHideFlags: 0
