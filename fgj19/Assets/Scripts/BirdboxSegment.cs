@@ -2,20 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteAlways]
 public class BirdboxSegment : MonoBehaviour
 {
-    [SerializeField] private int _Type;
-    public int Type { get { return _Type; } }
+    [SerializeField] private int _BaseColorIndex;
+    public int BaseColorIndex { get { return _BaseColorIndex; } }
+    [SerializeField] private ColorPalette BaseColorPalette;
+
+    private Renderer Renderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Renderer = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Renderer.material.color = BaseColorPalette[BaseColorIndex];
+
+        if ( !Application.isPlaying )
+        {
+            return;
+        }
+    }
+
+    bool Matches(BirdboxSegment other)
+    {
+        return _BaseColorIndex == other._BaseColorIndex;
     }
 }
