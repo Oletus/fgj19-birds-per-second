@@ -9,12 +9,14 @@ public class Score : MonoBehaviour
   private List<Tree> trees = new List<Tree>();
   private static int score;
   public static Score instance { get; private set; }
+  public List<(int y, int x1, int x2)> segmentConnections;
   Text text;
 
   void Awake()
   {
     instance = this;
     score = 0;
+    segmentConnections = new List<(int y, int x1, int x2)>();
     text = GetComponentInChildren<Text>();
   }
 
@@ -48,12 +50,16 @@ public class Score : MonoBehaviour
 
       for (int i = treeIndex + dir; i < trees.Count() && i >= 0; i += dir)
       {
+        // Look for a birdhouse segment with the same Y coordinate in a neighbouring tree:
         Birdhouse neighbouringBirdhouse = null;
         BirdhouseSegment neighbouringSegment = null;
-        foreach (var bh in trees[i].Birdhouses) {
+        foreach (var bh in trees[i].Birdhouses)
+        {
           var bhSegIndex = 0;
-          foreach (var bhSeg in bh.Segments.OrderBy(s => s.transform.position.y)) {
-            if (bh.PlacementGridY + bhSegIndex == coordY) {
+          foreach (var bhSeg in bh.Segments.OrderBy(s => s.transform.position.y))
+          {
+            if (bh.PlacementGridY + bhSegIndex == coordY)
+            {
               neighbouringBirdhouse = bh;
               neighbouringSegment = bhSeg;
               break;
@@ -62,17 +68,17 @@ public class Score : MonoBehaviour
           }
         }
 
-        if (neighbouringSegment) {
-          if (onRightSide != neighbouringBirdhouse.OnRightSide && segment.Matches(neighbouringSegment)) {
+        if (neighbouringSegment)
+        {
+          if (onRightSide != neighbouringBirdhouse.OnRightSide && segment.Matches(neighbouringSegment))
+          {
             Debug.Log("Matched from " + treeIndex + " to " + i);
             score++;
-          } else {
-            // Blocked by a birdhouse facing another way OR a symbol mismatch
-            break;
           }
+          // Blocked by a birdhouse facing another way OR a symbol mismatch:
+          break;
         }
       }
     }
-
   }
 }

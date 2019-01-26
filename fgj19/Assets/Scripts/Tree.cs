@@ -77,6 +77,8 @@ public class Tree : MonoBehaviour
         house.SetAttachedTransform(this, placementGridY, onRightSide, false);
         Birdhouses.Add(house);
         house.OnAttached();
-        Score.instance.OnBirdHouseAttached(this, house, placementGridY, onRightSide);
+        if (Score.instance) {
+            Score.instance.OnBirdHouseAttached(this, house, placementGridY, onRightSide);
+        }
     }
 }
