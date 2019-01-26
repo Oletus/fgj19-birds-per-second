@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ public class Score : MonoBehaviour
 
   void Start()
   {
-    foreach (var tree in Object.FindObjectsOfType<Tree>())
+    foreach (var tree in UnityEngine.Object.FindObjectsOfType<Tree>())
     {
       trees.Add(tree);
     }
@@ -48,6 +49,14 @@ public class Score : MonoBehaviour
       var coordY = placementGridY + segmentIndex;
       segmentIndex++;
 
+      // Check for broken connections:
+      var brokenConnection = segmentConnections.FirstOrDefault(sg => sg.y == coordY && sg.x1 < treeIndex && treeIndex < sg.x2);
+      if (brokenConnection != default(ValueTuple<int, int, int>)) {
+        Debug.Log("Broken connection at " + brokenConnection);
+        score--;
+      }
+
+      // Check for new connections:
       for (int i = treeIndex + dir; i < trees.Count() && i >= 0; i += dir)
       {
         // Look for a birdhouse segment with the same Y coordinate in a neighbouring tree:
@@ -74,6 +83,7 @@ public class Score : MonoBehaviour
           {
             Debug.Log("Matched from " + treeIndex + " to " + i);
             score++;
+            segmentConnections.Add((coordY, Math.Min(treeIndex, i), Math.Max(treeIndex, i)));
           }
           // Blocked by a birdhouse facing another way OR a symbol mismatch:
           break;
