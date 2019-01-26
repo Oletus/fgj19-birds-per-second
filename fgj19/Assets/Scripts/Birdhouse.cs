@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteAlways]
+[RequireComponent(typeof(AudioSource))]
 public class Birdhouse : MonoBehaviour
 {
     [SerializeField] private GridConfig Config;
@@ -14,14 +15,14 @@ public class Birdhouse : MonoBehaviour
         AttachedToTree
     }
 
-    public bool OnLeftSideOfTree { set; get; }
-
     private List<BirdhouseSegment> Segments;
+    private AudioSource AudioSource;
 
     // Start is called before the first frame update
     void Awake()
     {
         Segments = new List<BirdhouseSegment>(GetComponentsInChildren<BirdhouseSegment>());
+        AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -50,6 +51,7 @@ public class Birdhouse : MonoBehaviour
 
     public void OnAttached()
     {
-
+        AudioSource.loop = true;
+        AudioSource.Play();
     }
 }
