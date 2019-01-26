@@ -10,7 +10,7 @@ public class Score : MonoBehaviour
     private List<Tree> trees = new List<Tree>();
     private static int score;
     public static Score instance { get; private set; }
-    public List<(int y, int x1, int x2)> segmentConnections;
+    public List<(int y, int x1, int x2, SegmentConnection sg)> segmentConnections;
     Text text;
 
     [SerializeField]
@@ -20,7 +20,7 @@ public class Score : MonoBehaviour
     {
         instance = this;
         score = 0;
-        segmentConnections = new List<(int y, int x1, int x2)>();
+        segmentConnections = new List<(int y, int x1, int x2, SegmentConnection sg)>();
         text = GetComponentInChildren<Text>();
     }
 
@@ -54,9 +54,9 @@ public class Score : MonoBehaviour
 
             // Check for broken connections:
             var brokenConnection = segmentConnections.FirstOrDefault(sg => sg.y == coordY && sg.x1 < treeIndex && treeIndex < sg.x2);
-            if (brokenConnection != default(ValueTuple<int, int, int>))
+            if (brokenConnection != default(ValueTuple<int, int, int, SegmentConnection>))
             {
-                Debug.Log("Broken connection at " + brokenConnection);
+                Destroy(brokenConnection.sg.gameObject);
                 score--;
             }
 
@@ -84,19 +84,19 @@ public class Score : MonoBehaviour
                 {
                     if (onRightSide != neighbouringBirdhouse.OnRightSide && segment.Matches(neighbouringSegment))
                     {
-                        score++;
-                        segmentConnections.Add((coordY, Math.Min(treeIndex, i), Math.Max(treeIndex, i)));
-
                         var fromSeg = (onRightSide ? segment : neighbouringSegment).GetComponentInChildren<MeshFilter>();
                         var toSeg = (onRightSide ? neighbouringSegment : segment).GetComponentInChildren<MeshFilter>();
 
-                        var clone = Instantiate(sc, fromSeg.transform.position, Quaternion.identity);
+                        var sg = Instantiate(sc, fromSeg.transform.position, Quaternion.identity);
                         var newWidth = toSeg.transform.position.x - fromSeg.transform.position.x;
                         var direction = (toSeg.transform.position - fromSeg.transform.position).normalized;
 
-                        clone.transform.localScale = new Vector3(newWidth, 0.4F, 1);
-                        clone.transform.rotation = Quaternion.FromToRotation(Vector3.right, toSeg.transform.position - fromSeg.transform.position);
-                        clone.transform.position += new Vector3(newWidth / 2, 0.1F, 0);
+                        sg.transform.localScale = new Vector3(newWidth, 0.4F, 1);
+                        sg.transform.rotation = Quaternion.FromToRotation(Vector3.right, toSeg.transform.position - fromSeg.transform.position);
+                        sg.transform.position += new Vector3(newWidth / 2, 0.1F, 0);
+
+                        score++;
+                        segmentConnections.Add((y: coordY, x1: Math.Min(treeIndex, i), x2: Math.Max(treeIndex, i), sg: sg));
                     }
                     // Blocked by a birdhouse facing another way OR a symbol mismatch:
                     break;
