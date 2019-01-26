@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Birdbox : MonoBehaviour
+public class Birdhouse : MonoBehaviour
 {
     public enum State
     {
@@ -13,12 +13,12 @@ public class Birdbox : MonoBehaviour
 
     public bool OnLeftSideOfTree { set; get; }
 
-    private List<BirdboxSegment> Segments;
+    private List<BirdhouseSegment> Segments;
 
     // Start is called before the first frame update
     void Awake()
     {
-        Segments = new List<BirdboxSegment>(GetComponentsInChildren<BirdboxSegment>());
+        Segments = new List<BirdhouseSegment>(GetComponentsInChildren<BirdhouseSegment>());
     }
 
     // Update is called once per frame

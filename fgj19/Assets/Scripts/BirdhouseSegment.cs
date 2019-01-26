@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteAlways]
-public class BirdboxSegment : MonoBehaviour
+public class BirdhouseSegment : MonoBehaviour
 {
     [SerializeField] private int _BaseColorIndex;
     public int BaseColorIndex { get { return _BaseColorIndex; } }
@@ -28,7 +28,7 @@ public class BirdboxSegment : MonoBehaviour
         }
     }
 
-    bool Matches(BirdboxSegment other)
+    bool Matches(BirdhouseSegment other)
     {
         return _BaseColorIndex == other._BaseColorIndex;
     }
