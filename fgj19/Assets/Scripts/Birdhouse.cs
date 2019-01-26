@@ -51,7 +51,6 @@ public class Birdhouse : MonoBehaviour
 
     public void OnAttached()
     {
-        AudioSource.loop = true;
-        AudioSource.Play();
+        BeatSynchronizer.Instance.PlayOnNextBeat(AudioSource, true);
     }
 }

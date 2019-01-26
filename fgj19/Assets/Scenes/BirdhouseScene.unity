@@ -495,6 +495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 709923514}
   - component: {fileID: 709923517}
+  - component: {fileID: 709923518}
   - component: {fileID: 709923516}
   - component: {fileID: 709923513}
   - component: {fileID: 709923515}
@@ -578,6 +579,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _GridConfig: {fileID: 11400000, guid: fa477730d10fade41a77b8d916ecbf9d, type: 2}
+--- !u!114 &709923518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709923512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074c9b076782c794c9ba40c386defcc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BPM: 90
 --- !u!1 &721145317
 GameObject:
   m_ObjectHideFlags: 0
