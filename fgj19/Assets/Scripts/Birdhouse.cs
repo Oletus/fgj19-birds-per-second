@@ -47,4 +47,9 @@ public class Birdhouse : MonoBehaviour
 
         // Gameplay logic here.
     }
+
+    public void OnAttached()
+    {
+
+    }
 }

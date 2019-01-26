@@ -43,18 +43,17 @@ public class TreePositionSelect : MonoBehaviour
 
         int placementHeight = Mathf.Max(GridConfig.MinPlacementHeight, Mathf.Min(MaxPlacementHeight, cursorGridHeight));
 
-        float horizontalOffset = tree.GetWidthAtHeight(placementHeight) * 0.5f - 0.05f;
-        if ( hitInfo.point.x < tree.transform.position.x )
-        {
-            horizontalOffset = -horizontalOffset;
-        }
-
-        PlacedObject.transform.position = tree.transform.position + Vector3.up * GridConfig.SegmentHeight * placementHeight + Vector3.right * horizontalOffset + Vector3.back * 0.6f;
+        bool onRightSide = hitInfo.point.x > tree.transform.position.x;
 
         if ( Input.GetMouseButtonDown(0) )
         {
+            tree.AttachBirdhouse(PlacedObject, placementHeight, onRightSide);
             // TODO: Switch object from preview to placed mode.
             PlacedObject = null;
+        }
+        else
+        {
+            tree.PreviewBirdhouse(PlacedObject, placementHeight, onRightSide);
         }
     }
 }

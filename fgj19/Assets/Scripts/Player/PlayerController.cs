@@ -6,21 +6,23 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    private TreePositionSelect PositionSelect;
-    private PlacedObjectQueue ObjectQueue;
+    private TreePositionSelect _PositionSelect;
+    public TreePositionSelect PositionSelect { get { return _PositionSelect; } }
+    private PlacedObjectQueue _ObjectQueue;
+    public PlacedObjectQueue ObjectQueue { get { return _ObjectQueue; } }
 
     private void Awake()
     {
-        PositionSelect = GetComponent<TreePositionSelect>();
-        ObjectQueue = GetComponent<PlacedObjectQueue>();
+        _PositionSelect = GetComponent<TreePositionSelect>();
+        _ObjectQueue = GetComponent<PlacedObjectQueue>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (PositionSelect.PlacedObject == null)
+        if (_PositionSelect.PlacedObject == null)
         {
-            PositionSelect.PlacedObject = ObjectQueue.ObtainNext();
+            _PositionSelect.PlacedObject = _ObjectQueue.ObtainNext();
         }
     }
 }
