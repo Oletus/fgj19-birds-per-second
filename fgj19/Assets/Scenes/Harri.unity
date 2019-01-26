@@ -899,7 +899,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 9af3e3eeb50ba07449bd714d8fc0e0cd, type: 3}
+      objectReference: {fileID: 8300000, guid: 67c494ff3dbfbc843a7a7abcb48613cc, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07eb073b5c090fe498ceda3968751463, type: 3}
 --- !u!1001 &1407634372
@@ -988,7 +988,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 9106485148b2729429ec4ee011aef912, type: 3}
+      objectReference: {fileID: 8300000, guid: 683fe115fffff9f469a0d9105de81bca, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07eb073b5c090fe498ceda3968751463, type: 3}
 --- !u!4 &1407634373 stripped
@@ -1095,7 +1095,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 83385c1bcbfdd714db5a33e599228777, type: 3}
+      objectReference: {fileID: 8300000, guid: 20da66559eb2b854f8f41ff3dcfdcabc, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07eb073b5c090fe498ceda3968751463, type: 3}
 --- !u!4 &1608157564 stripped
@@ -1197,7 +1197,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 7ca90885c5a200242a0db4c2fee49fc0, type: 3}
+      objectReference: {fileID: 8300000, guid: 5e24397306f88eb4c960e054bb448ef4, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07eb073b5c090fe498ceda3968751463, type: 3}
 --- !u!1 &1615421680
@@ -1211,7 +1211,7 @@ GameObject:
   - component: {fileID: 1615421681}
   - component: {fileID: 1615421682}
   m_Layer: 0
-  m_Name: music_treesong5_drone2
+  m_Name: music_treesong6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1241,7 +1241,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 76742117efc13604bbbfe138ea0ebc7d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 606fc3acce3afaa4a9d6244c99647fea, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -1413,7 +1413,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 209a1e36b6ed3b642bca9f367281ddd6, type: 3}
+      objectReference: {fileID: 8300000, guid: 228addf50d15fb94ebab5fe77ee24d44, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07eb073b5c090fe498ceda3968751463, type: 3}
 --- !u!4 &1930392858 stripped
@@ -1642,7 +1642,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 22785030ba64f2945bf0ca2f6b08f63a, type: 3}
+      objectReference: {fileID: 8300000, guid: f17c7ecaf0bf6044e9480df77f3a1a28, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07eb073b5c090fe498ceda3968751463, type: 3}
 --- !u!1001 &3294886981654706056
