@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteAlways]
 public class BirdhouseSegment : MonoBehaviour
 {
     [SerializeField] private int _BaseColorIndex;
@@ -20,12 +19,8 @@ public class BirdhouseSegment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Would be nice to do this setting during edit mode as well, but it will create unwanted material instances in the scene.
         Renderer.material.color = BaseColorPalette[BaseColorIndex];
-
-        if ( !Application.isPlaying )
-        {
-            return;
-        }
     }
 
     bool Matches(BirdhouseSegment other)
