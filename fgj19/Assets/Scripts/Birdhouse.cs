@@ -24,6 +24,8 @@ public class Birdhouse : MonoBehaviour
     private Light Light;
     private ParticleSystemForceField ForceField;
 
+    public float ParticleIntensity { get; private set; }
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -98,9 +100,19 @@ public class Birdhouse : MonoBehaviour
             {
                 Light.intensity = audioTimeMult * beatMult * 3.0f;
             }
+            ParticleIntensity = audioTimeMult * beatMult;
             yield return null;
         }
-        Light.intensity = 0.0f;
+        ParticleIntensity = 0.0f;
+        if ( Light )
+        {
+            Light.intensity = 0.0f;
+        }
+        if ( ForceField )
+        {
+            ForceField.directionY = 0.0f;
+            ForceField.rotationSpeed = 0.0f;
+        }
     }
 
     public void OnAttached()

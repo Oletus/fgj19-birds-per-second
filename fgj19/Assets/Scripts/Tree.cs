@@ -8,6 +8,8 @@ public class Tree : MonoBehaviour
 
     [SerializeField] private int _MaxBirdhouses = 1;
 
+    private ParticleSystem ParticleSystem;
+
     public List<Birdhouse> Birdhouses;
 
     public bool HasBirdHouse { get { return Birdhouses.Count != 0; } }
@@ -15,6 +17,7 @@ public class Tree : MonoBehaviour
     private void Awake()
     {
         Birdhouses = new List<Birdhouse>();
+        ParticleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
     private float GetWidthAtY(int y)
@@ -80,5 +83,21 @@ public class Tree : MonoBehaviour
         if (Score.instance) {
             Score.instance.OnBirdHouseAttached(this, house, placementGridY, onRightSide);
         }
+    }
+
+    private void Update()
+    {
+        float totalParticleIntensity = 0.0f;
+        float minY = 100.0f;
+        foreach ( Birdhouse house in Birdhouses )
+        {
+            totalParticleIntensity += house.ParticleIntensity;
+            minY = Mathf.Min(minY, house.transform.position.y);
+        }
+        Vector3 particlePos = transform.position;
+        particlePos.y = minY - 1.0f;
+        ParticleSystem.transform.position = particlePos;
+        ParticleSystem.EmissionModule emission = ParticleSystem.emission;
+        emission.rateOverTime = totalParticleIntensity * 100.0f;
     }
 }
