@@ -18,25 +18,19 @@ public class TreePositionSelect : MonoBehaviour
         Pointer = new Pointer();
     }
 
-    private void Update()
+    // Returns true if preview object should be visible.
+    private bool TryPlaceAtCursor()
     {
-        if ( PlacedObject == null )
-        {
-            return;
-        }
-
         RaycastHit hitInfo = new RaycastHit();
-        if (!Physics.Raycast(Pointer.GetRay(Camera.main), out hitInfo, 100.0f, 1 << LayerMask.NameToLayer("PlacementCollider")))
+        if ( !Physics.Raycast(Pointer.GetRay(Camera.main), out hitInfo, 100.0f, 1 << LayerMask.NameToLayer("PlacementCollider")) )
         {
-            PlacedObject.gameObject.SetActive(false);
-            return;
+            return false;
         }
-        PlacedObject.gameObject.SetActive(true);
 
         Tree tree = hitInfo.collider.GetComponentInParent<Tree>();
         if ( !tree )
         {
-            return;
+            return false;
         }
         float cursorWorldYOffset = hitInfo.point.y - tree.transform.position.y;
         int cursorGridHeight = Mathf.RoundToInt(cursorWorldYOffset / GridConfig.SegmentHeight);
@@ -45,15 +39,35 @@ public class TreePositionSelect : MonoBehaviour
 
         bool onRightSide = hitInfo.point.x > tree.transform.position.x;
 
-        if ( Input.GetMouseButtonDown(0) )
+        if ( tree.CanBeAttached(PlacedObject, placementHeight, onRightSide) )
         {
-            tree.AttachBirdhouse(PlacedObject, placementHeight, onRightSide);
-            // TODO: Switch object from preview to placed mode.
-            PlacedObject = null;
+            if ( Input.GetMouseButtonDown(0) )
+            {
+                PlacedObject.gameObject.SetActive(true);
+                tree.AttachBirdhouse(PlacedObject, placementHeight, onRightSide);                
+                PlacedObject = null;
+                return false;
+            }
+            else
+            {
+                tree.PreviewBirdhouse(PlacedObject, placementHeight, onRightSide);
+            }
+            return true;
         }
-        else
+        return false;
+    }
+
+    private void Update()
+    {
+        if ( PlacedObject == null )
         {
-            tree.PreviewBirdhouse(PlacedObject, placementHeight, onRightSide);
+            return;
+        }
+
+        bool previewActive = TryPlaceAtCursor();
+        if ( PlacedObject != null )
+        {
+            PlacedObject.gameObject.SetActive(previewActive);
         }
     }
 }

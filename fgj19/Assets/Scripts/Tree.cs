@@ -6,6 +6,8 @@ public class Tree : MonoBehaviour
 {
     [SerializeField] private int _Height;
 
+    [SerializeField] private int _MaxBirdhouses = 1;
+
     private List<Birdhouse> Birdhouses;
 
     public bool HasBirdHouse { get { return Birdhouses.Count != 0; } }
@@ -18,6 +20,15 @@ public class Tree : MonoBehaviour
     private float GetWidthAtHeight(int height)
     {
         return 1.0f;
+    }
+
+    public bool CanBeAttached(Birdhouse house, int placementHeight, bool onRightSide)
+    {
+        if (Birdhouses.Count >= _MaxBirdhouses)
+        {
+            return false;
+        }
+        return true;
     }
 
     private void SetAttachedObjectTransform(Birdhouse house, int placementHeight, bool onRightSide, bool preview)
