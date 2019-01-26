@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GridConfig
   m_EditorClassIdentifier: 
   _MinPlacementHeight: 3
-  _SegmentHeight: 0.5
+  _SegmentHeight: 0.6
