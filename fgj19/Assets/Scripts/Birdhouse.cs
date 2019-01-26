@@ -41,7 +41,10 @@ public class Birdhouse : MonoBehaviour
         foreach (BirdhouseSegment segment in Segments)
         {
             segment.transform.localPosition = Vector3.zero + Vector3.up * i * Config.SegmentHeight;
-            segment.GetComponent<SpriteRenderer>().sortingOrder = i;
+            if ( segment.GetComponent<SpriteRenderer>() )
+            {
+                segment.GetComponent<SpriteRenderer>().sortingOrder = i;
+            }
             ++i;
         }
 
@@ -67,6 +70,7 @@ public class Birdhouse : MonoBehaviour
         PlacementGridY = placementGridY;
         OnRightSide = onRightSide;
         transform.position = tree.GetAttachmentPosition(placementGridY, onRightSide, preview);
+        transform.rotation = tree.GetAttachmentRotation(onRightSide);
     }
 
     public void OnAttached()

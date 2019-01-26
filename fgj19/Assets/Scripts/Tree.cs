@@ -19,23 +19,36 @@ public class Tree : MonoBehaviour
 
     private float GetWidthAtY(int y)
     {
-        return 1.0f;
+        return 0.4f;
     }
 
     public Vector3 GetAttachmentPosition(int placementY, bool onRightSide, bool preview = false)
     {
         float y = GlobalConfig.Instance.GridConfig.SegmentHeight * placementY;
-        float horizontalOffset = GetWidthAtY(placementY) * 0.5f - 0.05f;
+        float horizontalOffset = GetWidthAtY(placementY);
         if ( preview )
         {
             horizontalOffset += 0.3f;
         }
-        if ( !onRightSide )
-        {
-            horizontalOffset = -horizontalOffset;
-        }
 
-        return transform.position + Vector3.up * y + Vector3.right * horizontalOffset + Vector3.back * 0.6f;
+        return transform.position + Vector3.up * y + GetAttachmentFrontDirection(onRightSide).normalized * horizontalOffset;
+    }
+
+    private Vector3 GetAttachmentFrontDirection(bool onRightSide)
+    {
+        if ( onRightSide )
+        {
+            return Vector3.back + Vector3.right * 0.7f;
+        }
+        else
+        {
+            return Vector3.back + Vector3.left * 0.7f;
+        }
+    }
+
+    public Quaternion GetAttachmentRotation(bool onRightSide)
+    {
+        return Quaternion.LookRotation(GetAttachmentFrontDirection(onRightSide));
     }
 
     public bool CanBeAttached(int segmentCount, int placementGridY, bool onRightSide)
