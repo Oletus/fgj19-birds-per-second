@@ -443,5 +443,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _BaseColorIndex: 0
-  BaseColorPalette: {fileID: 0}
+  BaseColorPalette: {fileID: 11400000, guid: d026f14bb1f00c6429242cea2ab67cac, type: 2}
   IsRoof: 0
