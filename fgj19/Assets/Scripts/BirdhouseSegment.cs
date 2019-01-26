@@ -23,7 +23,7 @@ public class BirdhouseSegment : MonoBehaviour
         Renderer.material.color = BaseColorPalette[BaseColorIndex];
     }
 
-    bool Matches(BirdhouseSegment other)
+    public bool Matches(BirdhouseSegment other)
     {
         return _BaseColorIndex == other._BaseColorIndex;
     }

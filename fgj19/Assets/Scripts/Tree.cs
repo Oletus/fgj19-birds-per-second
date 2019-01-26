@@ -8,7 +8,7 @@ public class Tree : MonoBehaviour
 
     [SerializeField] private int _MaxBirdhouses = 1;
 
-    private List<Birdhouse> Birdhouses;
+    public List<Birdhouse> Birdhouses;
 
     public bool HasBirdHouse { get { return Birdhouses.Count != 0; } }
 
@@ -64,5 +64,6 @@ public class Tree : MonoBehaviour
         house.SetAttachedTransform(this, placementGridY, onRightSide, false);
         Birdhouses.Add(house);
         house.OnAttached();
+        Score.instance.OnBirdHouseAttached(this, house, placementGridY, onRightSide);
     }
 }
