@@ -20,25 +20,30 @@ public class Tree : MonoBehaviour
         return 1.0f;
     }
 
-    private void SetAttachedObjectTransform(Birdhouse house, int placementHeight, bool onRightSide)
+    private void SetAttachedObjectTransform(Birdhouse house, int placementHeight, bool onRightSide, bool preview)
     {
+        float y = GlobalConfig.Instance.GridConfig.SegmentHeight * placementHeight;
         float horizontalOffset = GetWidthAtHeight(placementHeight) * 0.5f - 0.05f;
+        if ( preview )
+        {
+            horizontalOffset += 0.3f;
+        }
         if ( !onRightSide )
         {
             horizontalOffset = -horizontalOffset;
         }
 
-        house.transform.position = transform.position + Vector3.up * GlobalConfig.Instance.GridConfig.SegmentHeight * placementHeight + Vector3.right * horizontalOffset + Vector3.back * 0.6f;
+        house.transform.position = transform.position + Vector3.up * y + Vector3.right * horizontalOffset + Vector3.back * 0.6f;
     }
 
     public void PreviewBirdhouse(Birdhouse house, int placementHeight, bool onRightSide)
     {
-        SetAttachedObjectTransform(house, placementHeight, onRightSide);
+        SetAttachedObjectTransform(house, placementHeight, onRightSide, true);
     }
 
     public void AttachBirdhouse(Birdhouse house, int placementHeight, bool onRightSide)
     {
-        SetAttachedObjectTransform(house, placementHeight, onRightSide);
+        SetAttachedObjectTransform(house, placementHeight, onRightSide, false);
         Birdhouses.Add(house);
         house.OnAttached();
     }
