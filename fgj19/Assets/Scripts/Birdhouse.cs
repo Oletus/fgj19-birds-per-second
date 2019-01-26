@@ -21,12 +21,14 @@ public class Birdhouse : MonoBehaviour
 
     private int PlacementGridY;
     private bool OnRightSide;
+    private Light Light;
 
     // Start is called before the first frame update
     void Awake()
     {
         Segments = new List<BirdhouseSegment>(GetComponentsInChildren<BirdhouseSegment>());
         AudioSource = GetComponent<AudioSource>();
+        Light = GetComponentInChildren<Light>();
     }
 
     // Update is called once per frame
@@ -73,8 +75,28 @@ public class Birdhouse : MonoBehaviour
         transform.rotation = tree.GetAttachmentRotation(onRightSide);
     }
 
+    private void OnBeat()
+    {
+        if ( Light != null )
+        {
+            StartCoroutine(FadeOutLight((float)BeatSynchronizer.Instance.AudioSyncBeatIntervalSeconds - 2.0f / 60.0f));
+        }
+    }
+
+    private IEnumerator FadeOutLight(float beatDuration)
+    {
+        float startTime = Time.time;
+        while ( Time.time < startTime + beatDuration )
+        {
+            float beatMult = 1.0f - (Time.time - startTime) / beatDuration;
+            float audioTimeMult = 1.0f - AudioSource.time / AudioSource.clip.length;
+            Light.intensity = audioTimeMult * beatMult * 3.0f;
+            yield return null;
+        }
+    }
+
     public void OnAttached()
     {
-        BeatSynchronizer.Instance.PlayOnNextBeat(AudioSource, true);
+        BeatSynchronizer.Instance.PlayOnNextBeat(AudioSource, true, OnBeat);
     }
 }
