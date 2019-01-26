@@ -87,13 +87,16 @@ public class Score : MonoBehaviour
                         score++;
                         segmentConnections.Add((coordY, Math.Min(treeIndex, i), Math.Max(treeIndex, i)));
 
-                        var padding = 0.1F;
-                        var fromSeg = onRightSide ? segment : neighbouringSegment;
-                        var toSeg = onRightSide ? neighbouringSegment : segment;
+                        var fromSeg = (onRightSide ? segment : neighbouringSegment).GetComponentInChildren<MeshFilter>();
+                        var toSeg = (onRightSide ? neighbouringSegment : segment).GetComponentInChildren<MeshFilter>();
+
                         var clone = Instantiate(sc, fromSeg.transform.position, Quaternion.identity);
                         var newWidth = toSeg.transform.position.x - fromSeg.transform.position.x;
-                        clone.transform.localScale = new Vector3(newWidth - padding * 2, fromSeg.transform.localScale.y, 0);
-                        clone.transform.position += new Vector3(newWidth / 2 + padding, 0, 0);
+                        var direction = (toSeg.transform.position - fromSeg.transform.position).normalized;
+
+                        clone.transform.localScale = new Vector3(newWidth, 0.4F, 1);
+                        clone.transform.rotation = Quaternion.FromToRotation(Vector3.right, toSeg.transform.position - fromSeg.transform.position);
+                        clone.transform.position += new Vector3(newWidth / 2, 0.1F, 0);
                     }
                     // Blocked by a birdhouse facing another way OR a symbol mismatch:
                     break;
