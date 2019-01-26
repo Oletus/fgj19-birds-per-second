@@ -34,3 +34,47 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+fgj19/Assets/Anima2D.meta
+fgj19/Assets/Anima2D/Examples.meta
+fgj19/Assets/Anima2D/Examples/Robot.meta
+fgj19/Assets/Anima2D/Examples/Robot/Animations.meta
+fgj19/Assets/Anima2D/Examples/Scenes.meta
+fgj19/Assets/Anima2D/Examples/Scripts.meta
+fgj19/Assets/Anima2D/Examples/Shaders.meta
+fgj19/Assets/Anima2D/Examples/TRex.meta
+fgj19/Assets/Anima2D/Examples/TRex/Animations.meta
+fgj19/Assets/Anima2D/Examples/TRex/Poses.meta
+fgj19/Assets/Anima2D/Examples/TRex/SpriteMeshes.meta
+fgj19/Assets/Anima2D/Examples/UnityChan.meta
+fgj19/Assets/Anima2D/Examples/UnityChan/Animations.meta
+fgj19/Assets/Anima2D/Examples/UnityChan/Poses.meta
+fgj19/Assets/Anima2D/Examples/UnityChan/SpriteMeshes.meta
+fgj19/Assets/Anima2D/Lib.meta
+fgj19/Assets/Anima2D/Lib/Editor.meta
+fgj19/Assets/Anima2D/Lib/Editor/x64.meta
+fgj19/Assets/Anima2D/Lib/Editor/x86_64.meta
+fgj19/Assets/Anima2D/Scripts.meta
+fgj19/Assets/Anima2D/Scripts/Editor.meta
+fgj19/Assets/Anima2D/Scripts/Editor/AnimationFixer.meta
+fgj19/Assets/Anima2D/Scripts/Editor/AnimationWindowExtra.meta
+fgj19/Assets/Anima2D/Scripts/Editor/Exporter.meta
+fgj19/Assets/Anima2D/Scripts/Editor/OnionSkin.meta
+fgj19/Assets/Anima2D/Scripts/Editor/TimeLine.meta
+fgj19/Assets/Anima2D/Scripts/Editor/Triangle.meta
+fgj19/Assets/Anima2D/Scripts/Editor/Triangle/Algorithm.meta
+fgj19/Assets/Anima2D/Scripts/Editor/Triangle/Data.meta
+fgj19/Assets/Anima2D/Scripts/Editor/Triangle/Geometry.meta
+fgj19/Assets/Anima2D/Scripts/Editor/Triangle/IO.meta
+fgj19/Assets/Anima2D/Scripts/Editor/Triangle/Log.meta
+fgj19/Assets/Anima2D/Scripts/Editor/Triangle/Smoothing.meta
+fgj19/Assets/Anima2D/Scripts/Editor/Triangle/Tools.meta
+fgj19/Assets/Anima2D/Scripts/Editor/VertexAnimation.meta
+fgj19/Assets/Anima2D/Scripts/Editor/VertexManipulator.meta
+fgj19/Assets/Anima2D/Scripts/Editor/VertexManipulator/RectManipulator.meta
+fgj19/Assets/ConsolePro.meta
+fgj19/Assets/ConsolePro/Editor.meta
+fgj19/Assets/ConsolePro/Remote.meta
+fgj19/Assets/ConsolePro/Remote/LiteNetLib.meta
+fgj19/Assets/Editor Default Resources.meta
+fgj19/Assets/Editor Default Resources/Anima2D.meta
+fgj19/Assets/Gizmos.meta
