@@ -22,6 +22,7 @@ public class Birdhouse : MonoBehaviour
     public int PlacementGridY;
     public bool OnRightSide;
     private Light Light;
+    private ParticleSystemForceField ForceField;
 
     // Start is called before the first frame update
     void Awake()
@@ -29,6 +30,7 @@ public class Birdhouse : MonoBehaviour
         Segments = new List<BirdhouseSegment>(GetComponentsInChildren<BirdhouseSegment>());
         AudioSource = GetComponent<AudioSource>();
         Light = GetComponentInChildren<Light>();
+        ForceField = GetComponentInChildren<ParticleSystemForceField>();
     }
 
     // Update is called once per frame
@@ -77,22 +79,28 @@ public class Birdhouse : MonoBehaviour
 
     private void OnBeat()
     {
-        if ( Light != null )
-        {
-            StartCoroutine(FadeOutLight((float)BeatSynchronizer.Instance.AudioSyncBeatIntervalSeconds - 2.0f / 60.0f));
-        }
+        StartCoroutine(FadeOutFX((float)BeatSynchronizer.Instance.AudioSyncBeatIntervalSeconds - 2.0f / 60.0f));
     }
 
-    private IEnumerator FadeOutLight(float beatDuration)
+    private IEnumerator FadeOutFX(float beatDuration)
     {
         float startTime = Time.time;
         while ( Time.time < startTime + beatDuration )
         {
             float beatMult = 1.0f - (Time.time - startTime) / beatDuration;
             float audioTimeMult = 1.0f - AudioSource.time / AudioSource.clip.length;
-            Light.intensity = audioTimeMult * beatMult * 3.0f;
+            if ( ForceField != null )
+            {
+                ForceField.directionY = audioTimeMult * beatMult * 200.0f;
+                ForceField.rotationSpeed = audioTimeMult * beatMult * 15.0f;
+            }
+            if ( Light != null )
+            {
+                Light.intensity = audioTimeMult * beatMult * 3.0f;
+            }
             yield return null;
         }
+        Light.intensity = 0.0f;
     }
 
     public void OnAttached()
