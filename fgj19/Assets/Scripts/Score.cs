@@ -47,7 +47,7 @@ public class Score : MonoBehaviour
         var dir = onRightSide ? 1 : -1;
 
         var segmentIndex = 0;
-        foreach (var segment in house.Segments.OrderBy(s => s.transform.position.y))
+        foreach (var segment in house.Segments.OrderBy(s => s.transform.localPosition.y))
         {
             var coordY = placementGridY + segmentIndex;
             segmentIndex++;
@@ -69,7 +69,7 @@ public class Score : MonoBehaviour
                 foreach (var bh in trees[i].Birdhouses)
                 {
                     var bhSegIndex = 0;
-                    foreach (var bhSeg in bh.Segments.OrderBy(s => s.transform.position.y))
+                    foreach (var bhSeg in bh.Segments.OrderBy(s => s.transform.localPosition.y))
                     {
                         if (bh.PlacementGridY + bhSegIndex == coordY)
                         {
