@@ -84,19 +84,19 @@ public class Score : MonoBehaviour
                 {
                     if (onRightSide != neighbouringBirdhouse.OnRightSide && segment.Matches(neighbouringSegment))
                     {
-                        var fromSeg = (onRightSide ? segment : neighbouringSegment).GetComponentInChildren<MeshFilter>();
-                        var toSeg = (onRightSide ? neighbouringSegment : segment).GetComponentInChildren<MeshFilter>();
+                        var fromSeg = (onRightSide ? segment : neighbouringSegment).GetComponentInChildren<SegmentConnectionAnchor>();
+                        var toSeg = (onRightSide ? neighbouringSegment : segment).GetComponentInChildren<SegmentConnectionAnchor>();
 
-                        var sg = Instantiate(sc, fromSeg.transform.position, Quaternion.identity);
-                        var newWidth = toSeg.transform.position.x - fromSeg.transform.position.x;
-                        var direction = (toSeg.transform.position - fromSeg.transform.position).normalized;
+                        var newConnector = Instantiate(sc);
+                        var connectorLength = toSeg.transform.position.x - fromSeg.transform.position.x;
+                        var direction = (toSeg.transform.position - fromSeg.transform.position);
 
-                        sg.transform.localScale = new Vector3(newWidth, 0.4F, 1);
-                        sg.transform.rotation = Quaternion.FromToRotation(Vector3.right, toSeg.transform.position - fromSeg.transform.position);
-                        sg.transform.position += new Vector3(newWidth / 2, 0.1F, 0);
+                        newConnector.transform.localScale = new Vector3(0.4F, 0.4F, connectorLength);
+                        newConnector.transform.rotation = Quaternion.LookRotation(direction);
+                        newConnector.transform.position = fromSeg.transform.position + direction * 0.5f;
 
                         score++;
-                        segmentConnections.Add((y: coordY, x1: Math.Min(treeIndex, i), x2: Math.Max(treeIndex, i), sg: sg));
+                        segmentConnections.Add((y: coordY, x1: Math.Min(treeIndex, i), x2: Math.Max(treeIndex, i), sg: newConnector));
                     }
                     // Blocked by a birdhouse facing another way OR a symbol mismatch:
                     break;
