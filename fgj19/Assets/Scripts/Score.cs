@@ -93,7 +93,9 @@ public class Score : MonoBehaviour
 
                         newConnector.transform.localScale = new Vector3(0.4F, 0.4F, connectorLength);
                         newConnector.transform.rotation = Quaternion.LookRotation(direction);
+                        newConnector.transform.eulerAngles += new Vector3(0, 0, -30);
                         newConnector.transform.position = fromSeg.transform.position + direction * 0.5f;
+
 
                         score++;
                         segmentConnections.Add((y: coordY, x1: Math.Min(treeIndex, i), x2: Math.Max(treeIndex, i), sg: newConnector));
