@@ -46,7 +46,7 @@ public class Birdhouse : MonoBehaviour
         int i = 0;
         foreach (BirdhouseSegment segment in Segments)
         {
-            segment.transform.localPosition = Vector3.zero + Vector3.up * i * Config.SegmentHeight;
+            segment.transform.localPosition = Vector3.zero - Vector3.up * i * Config.SegmentHeight;
             if ( segment.GetComponent<SpriteRenderer>() )
             {
                 segment.GetComponent<SpriteRenderer>().sortingOrder = i;

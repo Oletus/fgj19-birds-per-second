@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BirdhouseSegment : MonoBehaviour
 {
-    [SerializeField] private int _BaseColorIndex;
-    public int BaseColorIndex { get { return _BaseColorIndex; } }
+    public int BaseColorIndex;
     [SerializeField] private ColorPalette BaseColorPalette;
     [SerializeField] private bool IsRoof;
 
@@ -29,6 +28,6 @@ public class BirdhouseSegment : MonoBehaviour
 
     public bool Matches(BirdhouseSegment other)
     {
-        return _BaseColorIndex == other._BaseColorIndex;
+        return BaseColorIndex == other.BaseColorIndex;
     }
 }
