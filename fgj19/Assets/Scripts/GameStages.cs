@@ -16,12 +16,15 @@ public class GameStages : MonoBehaviour
     public class Stage
     {
         public Cinemachine.CinemachineVirtualCamera Cam;
-        public List<TreeActivation> ActiveTrees;
+        public List<TreeActivation> ActiveTrees;  // Should really be activatedTrees - previous activated trees are not changed.
         public int MaxPlacementHeight = 6;
+        public List<Birdhouse> BirdhousesToPlace;
     }
 
     [SerializeField] private List<Stage> Stages;
     private int StageIndex = -1;
+
+    private PlayerController PlayerController;
 
     private void Awake()
     {
@@ -30,7 +33,16 @@ public class GameStages : MonoBehaviour
             tree.LeftSideActive = false;
             tree.RightSideActive = false;
         }
+        PlayerController = FindObjectOfType<PlayerController>();
         NextStage();
+    }
+
+    private void Update()
+    {
+        if ( PlayerController.ObjectQueue.PlacedObjects.Count == 0 && PlayerController.PositionSelect.PlacedObject == null && StageIndex + 1 < Stages.Count )
+        {
+            NextStage();
+        }
     }
 
     [ContextMenu("Next Stage")]
@@ -45,5 +57,6 @@ public class GameStages : MonoBehaviour
         }
         stage.Cam.Priority = 10 * (StageIndex + 1);
         FindObjectOfType<TreePositionSelect>().MaxPlacementHeight = stage.MaxPlacementHeight;
+        PlayerController.ObjectQueue.PlacedObjects = stage.BirdhousesToPlace;
     }
 }
