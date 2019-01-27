@@ -8,6 +8,9 @@ public class Tree : MonoBehaviour
 
     [SerializeField] private int _MaxBirdhouses = 1;
 
+    [System.NonSerialized] public bool LeftSideActive = false;
+    [System.NonSerialized] public bool RightSideActive = false;
+
     private ParticleSystem ParticleSystem;
 
     public List<Birdhouse> Birdhouses;
@@ -57,6 +60,14 @@ public class Tree : MonoBehaviour
     public bool CanBeAttached(int segmentCount, int placementGridY, bool onRightSide)
     {
         if (Birdhouses.Count >= _MaxBirdhouses)
+        {
+            return false;
+        }
+        if (onRightSide && !RightSideActive)
+        {
+            return false;
+        }
+        if (!onRightSide && !LeftSideActive)
         {
             return false;
         }
