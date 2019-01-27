@@ -10,6 +10,7 @@ public class BirdhouseSegment : MonoBehaviour
 
     private Renderer Renderer;
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if ( BaseColorPalette != null )
@@ -22,6 +23,7 @@ public class BirdhouseSegment : MonoBehaviour
             UnityEditor.Handles.Label(transform.position, "" + BaseColorIndex);
         }
     }
+#endif
 
     // Start is called before the first frame update
     void Start()
