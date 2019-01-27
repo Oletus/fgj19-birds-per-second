@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Flying_Bird_Random_Anim : MonoBehaviour
 {
-    int randomNum;
-    float newRandomNum;
     Animator animator;
 
     void Start()
@@ -16,13 +14,10 @@ public class Flying_Bird_Random_Anim : MonoBehaviour
 
     public IEnumerator GetRandom()
     {
-        randomNum = Random.Range(1, 10);
-        newRandomNum = randomNum * 1.0f;
-        //Debug.Log("waiting for... " + newRandomNum);
+        float randomDelay = Random.Range(5f, 20f);
 
-        yield return new WaitForSeconds(newRandomNum);
+        yield return new WaitForSeconds(randomDelay);
 
-        // Debug.Log("should have called... " + newRandomNum);
         animator.SetTrigger("Trigger");
     }
 }
