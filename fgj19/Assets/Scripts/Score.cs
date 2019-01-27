@@ -93,7 +93,7 @@ public class Score : MonoBehaviour
 
                         newConnector.transform.localScale = new Vector3(0.4F, 0.4F, connectorLength);
                         newConnector.transform.rotation = Quaternion.LookRotation(direction);
-                        newConnector.transform.eulerAngles += new Vector3(0, 0, -60);
+                        newConnector.transform.eulerAngles += new Vector3(0, 0, -30);
                         newConnector.transform.position = fromSeg.transform.position + direction * 0.5f;
 
 
