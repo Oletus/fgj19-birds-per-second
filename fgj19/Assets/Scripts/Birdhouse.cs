@@ -18,6 +18,7 @@ public class Birdhouse : MonoBehaviour
     public List<BirdhouseSegment> Segments;
     public int SegmentCount { get { return (Segments != null) ? Segments.Count : 0; } }
     private AudioSource AudioSource;
+    [SerializeField] private bool UseRandomSound = true;
 
     public int PlacementGridY;
     public bool OnRightSide;
@@ -124,7 +125,7 @@ public class Birdhouse : MonoBehaviour
 
     public void OnAttached()
     {
-        if ( GlobalConfig.Instance.BirdhouseAudioClipPicker != null )
+        if ( GlobalConfig.Instance.BirdhouseAudioClipPicker != null && UseRandomSound )
         {
             AudioSource.clip = GlobalConfig.Instance.BirdhouseAudioClipPicker.GetNext();
         }
