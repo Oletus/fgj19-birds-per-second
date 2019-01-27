@@ -44,11 +44,11 @@ public class Tree : MonoBehaviour
     {
         if ( onRightSide )
         {
-            return Vector3.back + Vector3.right * 0.7f;
+            return Vector3.back + Vector3.right;
         }
         else
         {
-            return Vector3.back + Vector3.left * 0.7f;
+            return Vector3.back + Vector3.left;
         }
     }
 

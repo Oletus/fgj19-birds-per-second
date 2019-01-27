@@ -26,6 +26,8 @@ public class Birdhouse : MonoBehaviour
 
     public float ParticleIntensity { get; private set; }
 
+    private Animator Animator;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,6 +35,7 @@ public class Birdhouse : MonoBehaviour
         AudioSource = GetComponent<AudioSource>();
         Light = GetComponentInChildren<Light>();
         ForceField = GetComponentInChildren<ParticleSystemForceField>();
+        Animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -82,6 +85,10 @@ public class Birdhouse : MonoBehaviour
     private void OnBeat()
     {
         StartCoroutine(FadeOutFX((float)BeatSynchronizer.Instance.AudioSyncBeatIntervalSeconds - 2.0f / 60.0f));
+        if ( Animator )
+        {
+            Animator.SetTrigger("Beat");
+        }
     }
 
     private IEnumerator FadeOutFX(float beatDuration)
