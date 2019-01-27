@@ -8,8 +8,8 @@ public class Tree : MonoBehaviour
 
     [SerializeField] private int _MaxBirdhouses = 1;
 
-    [System.NonSerialized] public bool LeftSideActive = false;
-    [System.NonSerialized] public bool RightSideActive = false;
+    [System.NonSerialized] public bool LeftSideActive = true;
+    [System.NonSerialized] public bool RightSideActive = true;
 
     private ParticleSystem ParticleSystem;
 
