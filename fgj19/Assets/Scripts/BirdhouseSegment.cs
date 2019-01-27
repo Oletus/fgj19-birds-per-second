@@ -10,6 +10,19 @@ public class BirdhouseSegment : MonoBehaviour
 
     private Renderer Renderer;
 
+    private void OnDrawGizmos()
+    {
+        if ( BaseColorPalette != null )
+        {
+            Gizmos.color = BaseColorPalette[BaseColorIndex];
+            Gizmos.DrawCube(transform.position + Vector3.up * 0.3f + Vector3.back * 0.3f, Vector3.one * 0.65f);
+        }
+        else
+        {
+            UnityEditor.Handles.Label(transform.position, "" + BaseColorIndex);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
