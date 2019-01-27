@@ -25,6 +25,8 @@ public class Birdhouse : MonoBehaviour
     private Light Light;
     private ParticleSystemForceField ForceField;
 
+    [System.NonSerialized] public int GameStage;
+
     public float ParticleIntensity { get; private set; }
 
     private Animator Animator;
@@ -89,6 +91,11 @@ public class Birdhouse : MonoBehaviour
         if ( Animator )
         {
             Animator.SetTrigger("Beat");
+        }
+        GameStages gameStages = FindObjectOfType<GameStages>();
+        if ( gameStages )
+        {
+            gameStages.TriggerAnimations("FirstBirdHouse", GameStage);
         }
     }
 
