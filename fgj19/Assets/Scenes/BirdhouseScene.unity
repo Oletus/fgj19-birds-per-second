@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.58871996, g: 0.60961616, b: 0.6189917, a: 1}
+  m_IndirectSpecularColor: {r: 0.58872074, g: 0.60961735, b: 0.6189931, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -981,7 +981,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 35.97749
+    FieldOfView: 40.04965
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -3591,7 +3591,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 35.97749
+    FieldOfView: 40.04965
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -3674,7 +3674,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 35.97749
+    FieldOfView: 40.04965
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -5052,7 +5052,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 35.97749
+  field of view: 40.04965
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -11716,6 +11716,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2124018223}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2138510678
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1881164135764295124, guid: e2f51cd55fe054352a8870b5dcb107bf,
+        type: 3}
+      propertyPath: m_Name
+      value: FlyingBirds
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881164135764295127, guid: e2f51cd55fe054352a8870b5dcb107bf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30.831318
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881164135764295127, guid: e2f51cd55fe054352a8870b5dcb107bf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.4821663
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881164135764295127, guid: e2f51cd55fe054352a8870b5dcb107bf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 44.637505
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881164135764295127, guid: e2f51cd55fe054352a8870b5dcb107bf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881164135764295127, guid: e2f51cd55fe054352a8870b5dcb107bf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881164135764295127, guid: e2f51cd55fe054352a8870b5dcb107bf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881164135764295127, guid: e2f51cd55fe054352a8870b5dcb107bf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881164135764295127, guid: e2f51cd55fe054352a8870b5dcb107bf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881164135764295127, guid: e2f51cd55fe054352a8870b5dcb107bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881164135764295127, guid: e2f51cd55fe054352a8870b5dcb107bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881164135764295127, guid: e2f51cd55fe054352a8870b5dcb107bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e2f51cd55fe054352a8870b5dcb107bf, type: 3}
 --- !u!1001 &2143618352
 PrefabInstance:
   m_ObjectHideFlags: 0
