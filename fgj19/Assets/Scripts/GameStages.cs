@@ -25,7 +25,6 @@ public class GameStages : MonoBehaviour
     private int StageIndex = -1;
 
     private PlayerController PlayerController;
-    private PlacedObjectQueue ObjectQueue;
 
     private void Awake()
     {
@@ -34,7 +33,6 @@ public class GameStages : MonoBehaviour
             tree.LeftSideActive = false;
             tree.RightSideActive = false;
         }
-        ObjectQueue = FindObjectOfType<PlacedObjectQueue>();
         PlayerController = FindObjectOfType<PlayerController>();
         NextStage();
     }
@@ -59,6 +57,6 @@ public class GameStages : MonoBehaviour
         }
         stage.Cam.Priority = 10 * (StageIndex + 1);
         FindObjectOfType<TreePositionSelect>().MaxPlacementHeight = stage.MaxPlacementHeight;
-        ObjectQueue.PlacedObjects = stage.BirdhousesToPlace;
+        PlayerController.ObjectQueue.PlacedObjects = stage.BirdhousesToPlace;
     }
 }
