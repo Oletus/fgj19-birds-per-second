@@ -9,6 +9,9 @@ public class GlobalConfig : MonoBehaviour
     [SerializeField] private GridConfig _GridConfig;
     public GridConfig GridConfig { get { return _GridConfig; } }
 
+    [SerializeField] private AudioClipPicker _BirdhouseAudioClipPicker;
+    public AudioClipPicker BirdhouseAudioClipPicker { get { return _BirdhouseAudioClipPicker; } }
+
     // Start is called before the first frame update
     void Awake()
     {

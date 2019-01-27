@@ -117,6 +117,10 @@ public class Birdhouse : MonoBehaviour
 
     public void OnAttached()
     {
+        if ( GlobalConfig.Instance.BirdhouseAudioClipPicker != null )
+        {
+            AudioSource.clip = GlobalConfig.Instance.BirdhouseAudioClipPicker.GetNext();
+        }
         BeatSynchronizer.Instance.PlayOnNextBeat(AudioSource, true, OnBeat);
     }
 }
