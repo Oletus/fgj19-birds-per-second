@@ -258,6 +258,11 @@ MonoBehaviour:
       LeftSideActive: 0
       RightSideActive: 1
     MaxPlacementHeight: 6
+    BirdhousesToPlace:
+    - {fileID: 138040326}
+    - {fileID: 1407634374}
+    - {fileID: 1608157565}
+    - {fileID: 644412524}
   - Cam: {fileID: 190747416}
     ActiveTrees:
     - Tree: {fileID: 479989766}
@@ -273,6 +278,9 @@ MonoBehaviour:
       LeftSideActive: 0
       RightSideActive: 1
     MaxPlacementHeight: 8
+    BirdhousesToPlace:
+    - {fileID: 330743921}
+    - {fileID: 1930392860}
   - Cam: {fileID: 696491080}
     ActiveTrees:
     - Tree: {fileID: 1699156235}
@@ -288,6 +296,7 @@ MonoBehaviour:
       LeftSideActive: 0
       RightSideActive: 1
     MaxPlacementHeight: 10
+    BirdhousesToPlace: []
 --- !u!1001 &103480858
 PrefabInstance:
   m_ObjectHideFlags: 0
