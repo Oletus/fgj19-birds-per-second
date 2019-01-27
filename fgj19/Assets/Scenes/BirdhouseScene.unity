@@ -6435,6 +6435,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Birdhouse 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2417849353867215148, guid: 07eb073b5c090fe498ceda3968751463,
+        type: 3}
+      propertyPath: UseRandomSound
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2417849353867215149, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6509,7 +6514,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 5775a4249770346438ad2033649d2473, type: 3}
+      objectReference: {fileID: 8300000, guid: 8125443038ce03e45b45993e535eae9e, type: 3}
     - target: {fileID: 243047627147287684, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: _BaseColorIndex
@@ -8820,6 +8825,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Birdhouse 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2417849353867215148, guid: 07eb073b5c090fe498ceda3968751463,
+        type: 3}
+      propertyPath: UseRandomSound
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2417849353867215149, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8889,7 +8899,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: e867148ef240f01418fc614a8f20c95b, type: 3}
+      objectReference: {fileID: 8300000, guid: 69958dbea784bd84c9f499e209641aae, type: 3}
     - target: {fileID: 243047627147287684, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: _BaseColorIndex
