@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.58871984, g: 0.6096159, b: 0.6189915, a: 1}
+  m_IndirectSpecularColor: {r: 0.58872074, g: 0.60961735, b: 0.6189931, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -931,7 +931,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 35.9544
+    FieldOfView: 40.04965
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -3202,7 +3202,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 35.9544
+    FieldOfView: 40.04965
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -3285,7 +3285,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 35.9544
+    FieldOfView: 40.04965
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -4688,7 +4688,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 35.9544
+  field of view: 40.04965
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -5592,7 +5592,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -350, y: -100}
+  m_AnchoredPosition: {x: -1000, y: -100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1056019718
@@ -6288,11 +6288,6 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: b4215567836770e4c8d44e8877bb3d44, type: 3}
-    - target: {fileID: 1148683622530611696, guid: 07eb073b5c090fe498ceda3968751463,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 243047627147287684, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: _BaseColorIndex
@@ -6302,6 +6297,11 @@ PrefabInstance:
         type: 3}
       propertyPath: BaseColorIndex
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148683622530611696, guid: 07eb073b5c090fe498ceda3968751463,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4732128915866731277, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
@@ -7052,11 +7052,6 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 7854da8362e58b041b0b88eb6f4df0f9, type: 3}
-    - target: {fileID: 1148683622530611696, guid: 07eb073b5c090fe498ceda3968751463,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 243047627147287684, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: _BaseColorIndex
@@ -7066,6 +7061,11 @@ PrefabInstance:
         type: 3}
       propertyPath: BaseColorIndex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148683622530611696, guid: 07eb073b5c090fe498ceda3968751463,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4732128915866731277, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
@@ -7941,11 +7941,6 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: b5db45985e7a27648aba4b74bdd24161, type: 3}
-    - target: {fileID: 1148683622530611696, guid: 07eb073b5c090fe498ceda3968751463,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 243047627147287684, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: _BaseColorIndex
@@ -7955,6 +7950,11 @@ PrefabInstance:
         type: 3}
       propertyPath: BaseColorIndex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148683622530611696, guid: 07eb073b5c090fe498ceda3968751463,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4732128915866731277, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
@@ -8068,11 +8068,6 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: e867148ef240f01418fc614a8f20c95b, type: 3}
-    - target: {fileID: 1148683622530611696, guid: 07eb073b5c090fe498ceda3968751463,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 243047627147287684, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: _BaseColorIndex
@@ -8082,6 +8077,11 @@ PrefabInstance:
         type: 3}
       propertyPath: BaseColorIndex
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148683622530611696, guid: 07eb073b5c090fe498ceda3968751463,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4732128915866731277, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
@@ -9782,11 +9782,6 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 5775a4249770346438ad2033649d2473, type: 3}
-    - target: {fileID: 1148683622530611696, guid: 07eb073b5c090fe498ceda3968751463,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 243047627147287684, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: _BaseColorIndex
@@ -9796,6 +9791,11 @@ PrefabInstance:
         type: 3}
       propertyPath: BaseColorIndex
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148683622530611696, guid: 07eb073b5c090fe498ceda3968751463,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4732128915866731277, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
@@ -10878,11 +10878,6 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 9a1c14131e223de42ae377e2df7f96cd, type: 3}
-    - target: {fileID: 1148683622530611696, guid: 07eb073b5c090fe498ceda3968751463,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 243047627147287684, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
       propertyPath: _BaseColorIndex
@@ -10892,6 +10887,11 @@ PrefabInstance:
         type: 3}
       propertyPath: BaseColorIndex
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148683622530611696, guid: 07eb073b5c090fe498ceda3968751463,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4732128915866731277, guid: 07eb073b5c090fe498ceda3968751463,
         type: 3}
