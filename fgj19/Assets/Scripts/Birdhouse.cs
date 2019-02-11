@@ -20,7 +20,7 @@ public class Birdhouse : MonoBehaviour
     private AudioSource AudioSource;
     [SerializeField] private bool UseRandomSound = true;
 
-    public int PlacementGridY;
+    public int GridY;
     public bool OnRightSide;
     private Light Light;
     private ParticleSystemForceField ForceField;
@@ -74,12 +74,12 @@ public class Birdhouse : MonoBehaviour
         {
             return false;
         }
-        return (otherGridY + otherSegmentCount > PlacementGridY && PlacementGridY + SegmentCount > otherGridY);
+        return (otherGridY + otherSegmentCount > GridY && GridY + SegmentCount > otherGridY);
     }
 
     public void SetAttachedTransform(Tree tree, int placementGridY, bool onRightSide, bool preview)
     {
-        PlacementGridY = placementGridY;
+        GridY = placementGridY;
         OnRightSide = onRightSide;
         transform.position = tree.GetAttachmentPosition(placementGridY, onRightSide, preview);
         transform.rotation = tree.GetAttachmentRotation(onRightSide);

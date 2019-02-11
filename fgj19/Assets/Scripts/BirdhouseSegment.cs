@@ -8,6 +8,8 @@ public class BirdhouseSegment : MonoBehaviour
     [SerializeField] private ColorPalette BaseColorPalette;
     [SerializeField] private bool IsRoof;
 
+    [System.NonSerialized] public SegmentConnection connection;
+
     private Renderer Renderer;
 
 #if UNITY_EDITOR

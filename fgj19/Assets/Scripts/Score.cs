@@ -7,101 +7,137 @@ using System.Linq;
 
 public class Score : MonoBehaviour
 {
-    private List<Tree> trees = new List<Tree>();
-    private static int score;
-    public static Score instance { get; private set; }
-    public List<(int y, int x1, int x2, SegmentConnection sg)> segmentConnections;
+    private List<Tree> Trees = new List<Tree>();
+    private static int ConnectionCount;
+    public static Score Instance { get; private set; }
+    public List<SegmentConnection> SegmentConnections;
     Text text;
 
     [SerializeField]
-    public SegmentConnection sc;
+    public SegmentConnection segmentConnectionPrefab;
 
     void Awake()
     {
-        instance = this;
-        score = 0;
-        segmentConnections = new List<(int y, int x1, int x2, SegmentConnection sg)>();
+        Instance = this;
+        ConnectionCount = 0;
+        SegmentConnections = new List<SegmentConnection>();
         text = GetComponentInChildren<Text>();
     }
 
     void Start()
     {
-        foreach (var tree in UnityEngine.Object.FindObjectsOfType<Tree>())
+        Trees = UnityEngine.Object.FindObjectsOfType<Tree>().ToList();
+        Trees = Trees.OrderBy(t => t.transform.position.x).ToList();
+        for (int index = 0; index < Trees.Count; ++index )
         {
-            trees.Add(tree);
+            Trees[index].GridX = index;
         }
-        trees = trees.OrderBy(t => t.transform.position.x).ToList();
     }
 
     void Update()
     {
         if (text)
         {
-            text.text = "Score: " + score;
+            text.text = "Score: " + SegmentConnections.Count;
         }
     }
 
-    public void OnBirdHouseAttached(Tree tree, Birdhouse house, int placementGridY, bool onRightSide)
+    private void CreateConnection(BirdhouseSegment left, Tree leftTree, BirdhouseSegment right, Tree rightTree, int GridY)
     {
-        var treeIndex = trees.FindIndex(t => GameObject.ReferenceEquals(t, tree));
-        var dir = onRightSide ? 1 : -1;
+        var newConnector = Instantiate(segmentConnectionPrefab);
+        newConnector.LeftEnd = left;
+        newConnector.RightEnd = right;
+        newConnector.GridXLeft = leftTree.GridX;
+        newConnector.GridXRight = rightTree.GridX;
+        newConnector.GridY = GridY;
 
-        var segmentIndex = 0;
-        foreach (var segment in house.Segments.OrderBy(s => s.transform.localPosition.y))
+        var fromSeg = left.GetComponentInChildren<SegmentConnectionAnchor>();
+        var toSeg = right.GetComponentInChildren<SegmentConnectionAnchor>();
+
+        var connectorLength = toSeg.transform.position.x - fromSeg.transform.position.x;
+        var direction = (toSeg.transform.position - fromSeg.transform.position);
+
+        newConnector.transform.localScale = new Vector3(0.4F, 0.4F, connectorLength);
+        newConnector.transform.rotation = Quaternion.LookRotation(direction);
+        newConnector.transform.eulerAngles += new Vector3(0, 0, -30);
+        newConnector.transform.position = fromSeg.transform.position + direction * 0.5f;
+
+        SegmentConnections.Add(newConnector);
+    }
+
+    private bool IsConnectionBlocked(int GridXLeft, int GridXRight, int GridY)
+    {
+        foreach ( Tree tree in Trees )
         {
-            var coordY = placementGridY + segmentIndex;
-            segmentIndex++;
-
-            // Check for broken connections:
-            var brokenConnection = segmentConnections.FirstOrDefault(sg => sg.y == coordY && sg.x1 < treeIndex && treeIndex < sg.x2);
-            if (brokenConnection != default(ValueTuple<int, int, int, SegmentConnection>))
+            foreach ( Birdhouse house in tree.Birdhouses )
             {
-                Destroy(brokenConnection.sg.gameObject);
-                score--;
-            }
-
-            // Check for new connections:
-            for (int i = treeIndex + dir; i < trees.Count() && i >= 0; i += dir)
-            {
-                // Look for a birdhouse segment with the same Y coordinate in a neighbouring tree:
-                Birdhouse neighbouringBirdhouse = null;
-                BirdhouseSegment neighbouringSegment = null;
-                foreach (var bh in trees[i].Birdhouses)
+                if ( GridY >= house.GridY && GridY < house.GridY + house.SegmentCount &&
+                    tree.GridX > GridXLeft && tree.GridX < GridXRight )
                 {
-                    var bhSegIndex = 0;
-                    foreach (var bhSeg in bh.Segments.OrderBy(s => s.transform.localPosition.y))
-                    {
-                        if (bh.PlacementGridY + bhSegIndex == coordY)
-                        {
-                            neighbouringBirdhouse = bh;
-                            neighbouringSegment = bhSeg;
-                            break;
-                        }
-                        bhSegIndex++;
-                    }
+                    return true;
                 }
-                if (neighbouringSegment)
+            }
+        }
+        return false;
+    }
+
+    private bool IsConnectionBlocked(SegmentConnection connection)
+    {
+        return IsConnectionBlocked(connection.GridXLeft, connection.GridXRight, connection.GridY);
+    }
+
+    public void OnBirdHousesChanged()
+    {
+        // Check for broken connections.
+        for ( var connectionIndex = 0; connectionIndex < SegmentConnections.Count; )
+        {
+            SegmentConnection connection = SegmentConnections[connectionIndex];
+            if ( IsConnectionBlocked(connection) )
+            {
+                connection.LeftEnd.connection = null;
+                connection.RightEnd.connection = null;
+                Destroy(connection.gameObject);
+                SegmentConnections.RemoveAt(connectionIndex);
+            }
+            else
+            {
+                ++connectionIndex;
+            }
+        }
+
+        // Look for new connections.
+        // This is not very optimal but we have so few trees/birdhouses that it doesn't really matter.
+        foreach ( Tree tree in Trees )
+        {
+            foreach ( Birdhouse house in tree.Birdhouses )
+            { 
+                int GridY = house.GridY;
+                foreach ( BirdhouseSegment segment in house.Segments )
                 {
-                    if (onRightSide != neighbouringBirdhouse.OnRightSide && segment.Matches(neighbouringSegment))
+                    // Look for new connections to the right of this house's segments.
+                    if ( !segment.connection && house.OnRightSide )
                     {
-                        var fromSeg = (onRightSide ? segment : neighbouringSegment).GetComponentInChildren<SegmentConnectionAnchor>();
-                        var toSeg = (onRightSide ? neighbouringSegment : segment).GetComponentInChildren<SegmentConnectionAnchor>();
-
-                        var newConnector = Instantiate(sc);
-                        var connectorLength = toSeg.transform.position.x - fromSeg.transform.position.x;
-                        var direction = (toSeg.transform.position - fromSeg.transform.position);
-
-                        newConnector.transform.localScale = new Vector3(0.4F, 0.4F, connectorLength);
-                        newConnector.transform.rotation = Quaternion.LookRotation(direction);
-                        newConnector.transform.eulerAngles += new Vector3(0, 0, -30);
-                        newConnector.transform.position = fromSeg.transform.position + direction * 0.5f;
-
-
-                        score++;
-                        segmentConnections.Add((y: coordY, x1: Math.Min(treeIndex, i), x2: Math.Max(treeIndex, i), sg: newConnector));
+                        foreach ( Tree tree2 in Trees )
+                        {
+                            if ( tree2.GridX <= tree.GridX )
+                            {
+                                continue;
+                            }
+                            foreach ( Birdhouse house2 in tree2.Birdhouses )
+                            {
+                                int GridY2 = house2.GridY;
+                                foreach (BirdhouseSegment segment2 in house2.Segments)
+                                {
+                                    if ( GridY == GridY2 && !house2.OnRightSide && segment2.Matches(segment) && !IsConnectionBlocked(tree.GridX, tree2.GridX, GridY) )
+                                    {
+                                        CreateConnection(segment, tree, segment2, tree2, GridY);
+                                    }
+                                    ++GridY2;
+                                }
+                            }
+                        }
                     }
-                    // Blocked by a birdhouse facing another way OR a symbol mismatch:
-                    break;
+                    ++GridY;
                 }
             }
         }
