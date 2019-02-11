@@ -8,7 +8,6 @@ using System.Linq;
 public class Score : MonoBehaviour
 {
     private List<Tree> Trees = new List<Tree>();
-    private static int ConnectionCount;
     public static Score Instance { get; private set; }
     public List<SegmentConnection> SegmentConnections;
     Text text;
@@ -19,7 +18,6 @@ public class Score : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        ConnectionCount = 0;
         SegmentConnections = new List<SegmentConnection>();
         text = GetComponentInChildren<Text>();
     }
