@@ -92,10 +92,17 @@ public class Tree : MonoBehaviour
     {
         house.SetAttachedTransform(this, placementGridY, onRightSide, false);
         Birdhouses.Add(house);
-        house.OnAttached();
-        if (Score.Instance) {
+        house.OnAttached(this);
+        if (Score.Instance)
+        {
             Score.Instance.OnBirdHousesChanged();
         }
+    }
+
+    public void DetachHouse(Birdhouse house)
+    {
+        house.OnDetached();
+        Birdhouses.Remove(house);
     }
 
     private void Update()

@@ -90,7 +90,7 @@ public class Score : MonoBehaviour
         for ( var connectionIndex = 0; connectionIndex < SegmentConnections.Count; )
         {
             SegmentConnection connection = SegmentConnections[connectionIndex];
-            if ( IsConnectionBlocked(connection) )
+            if ( IsConnectionBlocked(connection) || connection.LeftEnd.Birdhouse.AttachedToTree == null || connection.RightEnd.Birdhouse.AttachedToTree == null )
             {
                 connection.LeftEnd.connection = null;
                 connection.RightEnd.connection = null;

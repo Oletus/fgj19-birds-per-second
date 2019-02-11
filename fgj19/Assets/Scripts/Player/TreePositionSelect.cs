@@ -9,48 +9,93 @@ public class TreePositionSelect : MonoBehaviour
 
     public GridConfig GridConfig;
 
-    public Birdhouse PlacedObject;
+    public Birdhouse ObjectBeingPlaced;
 
     private Pointer Pointer;
+
+    private PlacedObjectQueue PlacedObjectQueue;
 
     private void Awake()
     {
         Pointer = new Pointer();
+        PlacedObjectQueue = GetComponent<PlacedObjectQueue>();
     }
 
-    // Returns true if preview object should be visible.
-    private bool TryPlaceAtCursor()
+    private void TryPlaceAtCursor()
+    {
+        if ( ObjectBeingPlaced != null )
+        {
+            RaycastHit hitInfo = new RaycastHit();
+            if ( !Physics.Raycast(Pointer.GetRay(Camera.main), out hitInfo, 100.0f, 1 << LayerMask.NameToLayer("PlacementCollider")) )
+            {
+                ObjectBeingPlaced.gameObject.SetActive(false);
+                return;
+            }
+
+            Tree tree = hitInfo.collider.GetComponentInParent<Tree>();
+            if ( !tree )
+            {
+                ObjectBeingPlaced.gameObject.SetActive(false);
+                return;
+            }
+            float cursorWorldYOffset = hitInfo.point.y - tree.transform.position.y;
+            int cursorGridHeight = Mathf.RoundToInt(cursorWorldYOffset / GridConfig.SegmentHeight);
+
+            int placementGridY = Mathf.Max(GridConfig.MinPlacementHeight, Mathf.Min(MaxPlacementHeight, cursorGridHeight));
+
+            bool onRightSide = hitInfo.point.x > tree.transform.position.x;
+
+            if ( tree.CanBeAttached(ObjectBeingPlaced.SegmentCount, placementGridY, onRightSide) )
+            {
+                if ( Input.GetMouseButtonDown(0) )
+                {
+                    ObjectBeingPlaced.gameObject.SetActive(true);
+                    tree.AttachBirdhouse(ObjectBeingPlaced, placementGridY, onRightSide);
+                    ObjectBeingPlaced = null;
+                    return;
+                }
+                else
+                {
+                    tree.PreviewBirdhouse(ObjectBeingPlaced, placementGridY, onRightSide);
+                }
+                ObjectBeingPlaced.gameObject.SetActive(true);
+                return;
+            }
+            ObjectBeingPlaced.gameObject.SetActive(false);
+        }
+        return;
+    }
+
+    // Returns true if found a birdhouse that could be detached underneath cursor.
+    private bool TryDetachBirdhouse()
     {
         RaycastHit hitInfo = new RaycastHit();
-        if ( !Physics.Raycast(Pointer.GetRay(Camera.main), out hitInfo, 100.0f, 1 << LayerMask.NameToLayer("PlacementCollider")) )
+        if ( !Physics.Raycast(Pointer.GetRay(Camera.main), out hitInfo, 100.0f, 1 << LayerMask.NameToLayer("Birdhouse")) )
         {
             return false;
         }
-
-        Tree tree = hitInfo.collider.GetComponentInParent<Tree>();
-        if ( !tree )
+        Birdhouse attachedHouse = hitInfo.collider.GetComponentInParent<Birdhouse>();
+        if ( !attachedHouse )
         {
             return false;
         }
-        float cursorWorldYOffset = hitInfo.point.y - tree.transform.position.y;
-        int cursorGridHeight = Mathf.RoundToInt(cursorWorldYOffset / GridConfig.SegmentHeight);
-
-        int placementGridY = Mathf.Max(GridConfig.MinPlacementHeight, Mathf.Min(MaxPlacementHeight, cursorGridHeight));
-
-        bool onRightSide = hitInfo.point.x > tree.transform.position.x;
-
-        if ( tree.CanBeAttached(PlacedObject.SegmentCount, placementGridY, onRightSide) )
+        if ( attachedHouse.AttachedToTree )
         {
+            // TODO: Could show preview for detaching house.
             if ( Input.GetMouseButtonDown(0) )
             {
-                PlacedObject.gameObject.SetActive(true);
-                tree.AttachBirdhouse(PlacedObject, placementGridY, onRightSide);                
-                PlacedObject = null;
-                return false;
-            }
-            else
-            {
-                tree.PreviewBirdhouse(PlacedObject, placementGridY, onRightSide);
+                attachedHouse.AttachedToTree.DetachHouse(attachedHouse);
+                if ( ObjectBeingPlaced != null )
+                {
+                    ObjectBeingPlaced.gameObject.SetActive(true);
+                    ObjectBeingPlaced.PutBack();
+                    PlacedObjectQueue.AddToFrontOfQueue(ObjectBeingPlaced);
+                }
+                ObjectBeingPlaced = attachedHouse;
+                if ( Score.Instance != null )
+                {
+                    Score.Instance.OnBirdHousesChanged();
+                }
             }
             return true;
         }
@@ -59,15 +104,16 @@ public class TreePositionSelect : MonoBehaviour
 
     private void Update()
     {
-        if ( PlacedObject == null )
+        bool foundDetachable = TryDetachBirdhouse();
+
+        if ( foundDetachable && ObjectBeingPlaced )
         {
-            return;
+            ObjectBeingPlaced.gameObject.SetActive(false);
         }
 
-        bool previewActive = TryPlaceAtCursor();
-        if ( PlacedObject != null )
+        if ( !foundDetachable )
         {
-            PlacedObject.gameObject.SetActive(previewActive);
+            TryPlaceAtCursor();
         }
     }
 }

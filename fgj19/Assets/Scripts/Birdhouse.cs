@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using LPUnityUtils;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,14 +7,9 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Birdhouse : MonoBehaviour
 {
-    [SerializeField] private GridConfig Config;
+    private Vector3 PositionOnGround;
 
-    public enum State
-    {
-        Detached,
-        PickedUp,
-        AttachedToTree
-    }
+    [SerializeField] private GridConfig Config;
 
     public List<BirdhouseSegment> Segments;
     public int SegmentCount { get { return (Segments != null) ? Segments.Count : 0; } }
@@ -31,14 +27,23 @@ public class Birdhouse : MonoBehaviour
 
     private Animator Animator;
 
+    public Tree AttachedToTree { get; private set; }
+
+    CachedTransform OriginalTransform;
+
     // Start is called before the first frame update
     void Awake()
     {
         Segments = new List<BirdhouseSegment>(GetComponentsInChildren<BirdhouseSegment>());
+        foreach (BirdhouseSegment segment in Segments)
+        {
+            segment.Birdhouse = this;
+        }
         AudioSource = GetComponent<AudioSource>();
         Light = GetComponentInChildren<Light>();
         ForceField = GetComponentInChildren<ParticleSystemForceField>();
         Animator = GetComponentInChildren<Animator>();
+        OriginalTransform = new CachedTransform(transform);
     }
 
     // Update is called once per frame
@@ -130,12 +135,30 @@ public class Birdhouse : MonoBehaviour
         }
     }
 
-    public void OnAttached()
+    public void OnAttached(Tree tree)
     {
         if ( GlobalConfig.Instance.BirdhouseAudioClipPicker != null && UseRandomSound )
         {
             AudioSource.clip = GlobalConfig.Instance.BirdhouseAudioClipPicker.GetNext();
         }
         BeatSynchronizer.Instance.PlayOnNextBeat(AudioSource, true, OnBeat);
+        AttachedToTree = tree;
+    }
+
+    public void PutBack()
+    {
+        transform.Set(OriginalTransform);
+    }
+
+    public void OnDetached()
+    {
+        BeatSynchronizer.Instance.Stop(AudioSource);
+        AttachedToTree = null;
+    }
+
+    public void ResetToInitial()
+    {
+        transform.Set(OriginalTransform);
+        AttachedToTree = null;
     }
 }

@@ -40,7 +40,7 @@ public class GameStages : MonoBehaviour
 
     private void Update()
     {
-        if ( PlayerController.ObjectQueue.PlacedObjects.Count == 0 && PlayerController.PositionSelect.PlacedObject == null && StageIndex + 1 < Stages.Count )
+        if ( PlayerController.ObjectQueue.PlacedObjects.Count == 0 && PlayerController.PositionSelect.ObjectBeingPlaced == null && StageIndex + 1 < Stages.Count )
         {
             NextStage();
         }

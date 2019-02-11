@@ -12,6 +12,8 @@ public class BirdhouseSegment : MonoBehaviour
 
     private Renderer Renderer;
 
+    public Birdhouse Birdhouse;
+
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
