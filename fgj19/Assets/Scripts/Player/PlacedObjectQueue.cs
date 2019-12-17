@@ -22,15 +22,20 @@ public class PlacedObjectQueue : MonoBehaviour
         for (int i = 0; i < RandomBirdhousesN; i++)
         {
             var pos = new Vector3(Random.Range(-8F, -2F), 0, Random.Range(-8F, -2F));
-            Birdhouse bh = Instantiate(BirdhousePrefab, pos, Quaternion.Euler(0, 180, 0));
+            Birdhouse birdhouse = Instantiate(BirdhousePrefab, pos, Quaternion.Euler(0, 180, 0));
 
             for (int j = 0; j < Random.Range(1, 3); j++)
             {
-                BirdhouseSegment bhSeg = Instantiate(BirdhouseSegmentPrefab, bh.transform);
+                BirdhouseSegment bhSeg = Instantiate(BirdhouseSegmentPrefab, birdhouse.transform);
                 bhSeg.BaseColorIndex = Random.Range(1, 4);
             }
-            PlacedObjects.Add(bh);
+            PlacedObjects.Add(birdhouse);
         }
+    }
+
+    public void AddToFrontOfQueue(Birdhouse birdhouse)
+    {
+        PlacedObjects.Insert(0, birdhouse);
     }
 
     // Remove the next object from the queue and return it.

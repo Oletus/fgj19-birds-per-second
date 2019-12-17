@@ -8,6 +8,8 @@ public class Tree : MonoBehaviour
 
     [SerializeField] private int _MaxBirdhouses = 1;
 
+    [System.NonSerialized] public int GridX;
+
     [System.NonSerialized] public bool LeftSideActive = true;
     [System.NonSerialized] public bool RightSideActive = true;
 
@@ -90,10 +92,17 @@ public class Tree : MonoBehaviour
     {
         house.SetAttachedTransform(this, placementGridY, onRightSide, false);
         Birdhouses.Add(house);
-        house.OnAttached();
-        if (Score.instance) {
-            Score.instance.OnBirdHouseAttached(this, house, placementGridY, onRightSide);
+        house.OnAttached(this);
+        if (Score.Instance)
+        {
+            Score.Instance.OnBirdHousesChanged();
         }
+    }
+
+    public void DetachHouse(Birdhouse house)
+    {
+        house.OnDetached();
+        Birdhouses.Remove(house);
     }
 
     private void Update()

@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class SegmentConnection : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    [System.NonSerialized] public int GridY;
+    [System.NonSerialized] public int GridXLeft;
+    [System.NonSerialized] public int GridXRight;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    [System.NonSerialized] public BirdhouseSegment LeftEnd;
+    [System.NonSerialized] public BirdhouseSegment RightEnd;
 }

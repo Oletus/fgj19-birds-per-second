@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2322326802619081298}
   - component: {fileID: 2322326802619081299}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BirdhouseSegment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e333f3c68b0594f9dca7c7eb4376e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _BaseColorIndex: 4
+  BaseColorIndex: 0
   BaseColorPalette: {fileID: 11400000, guid: d026f14bb1f00c6429242cea2ab67cac, type: 2}
   IsRoof: 0
 --- !u!1 &2591612870056192780
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 7822351073885910819}
   - component: {fileID: 794230660847015695}
   - component: {fileID: 121605864841925548}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 600776703801195737}
   - component: {fileID: 8187890010530734612}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

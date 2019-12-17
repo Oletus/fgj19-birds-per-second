@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1889701193634698946}
   - component: {fileID: 4386588443227364941}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2041781976792667780}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4386588443227364941
 MonoBehaviour:
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 9207211471800130405}
   - component: {fileID: 7097217017953138472}
   - component: {fileID: 4272141185050510010}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ Transform:
   m_LocalScale: {x: 0.32899988, y: 0.32899988, z: 0.069499984}
   m_Children: []
   m_Father: {fileID: 2041781976792667780}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9207211471800130405
 MeshFilter:
@@ -146,8 +146,8 @@ GameObject:
   - component: {fileID: 1387773691185149772}
   - component: {fileID: 8408434735761362895}
   - component: {fileID: 4260961058527979230}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 10
+  m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,7 +165,7 @@ Transform:
   m_LocalScale: {x: 0.6550096, y: 0.04413755, z: 0.8823219}
   m_Children: []
   m_Father: {fileID: 2041781976792667780}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -2.8490002, y: 0, z: 0}
 --- !u!33 &1387773691185149772
 MeshFilter:
@@ -220,7 +220,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2522591114345338240}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 3153148965019039688}
   - component: {fileID: 8699179935738149311}
   - component: {fileID: 646983017039858304}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3356300284483961158}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.50000006
   m_Height: 1.9999998
@@ -329,7 +329,8 @@ GameObject:
   - component: {fileID: 3352594300787339700}
   - component: {fileID: 6731504181956418936}
   - component: {fileID: 7440558888562204952}
-  m_Layer: 0
+  - component: {fileID: 5409195974918180202}
+  m_Layer: 10
   m_Name: Birdbox_With_Hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +349,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 2041781976792667780}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &3352594300787339700
 MeshFilter:
@@ -407,36 +408,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af52628055e01b449aafcaa8b521bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7322561449353822149
-GameObject:
+--- !u!65 &5409195974918180202
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2474823598318781567}
-  m_Layer: 0
-  m_Name: BirdhouseRoof
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2474823598318781567
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7322561449353822149}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.65999997, z: -0.038999975}
-  m_LocalScale: {x: 0.84599996, y: 0.3, z: 0.73499984}
-  m_Children: []
-  m_Father: {fileID: 2041781976792667780}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 4128214544763335037}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0000007, y: 1.9999999, z: 2.0000007}
+  m_Center: {x: -0.00000005960464, y: 0, z: 0.00000011920928}
 --- !u!1 &8091088493560519450
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2041781976792667780}
   - component: {fileID: 1223385698462528496}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BirdhouseSegmentHole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +450,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 310303276529227568}
-  - {fileID: 2474823598318781567}
   - {fileID: 3590298135239395972}
   - {fileID: 8279174275224558307}
   - {fileID: 2819677244661506941}
@@ -490,6 +473,7 @@ MonoBehaviour:
   BaseColorIndex: 0
   BaseColorPalette: {fileID: 11400000, guid: d026f14bb1f00c6429242cea2ab67cac, type: 2}
   IsRoof: 1
+  Birdhouse: {fileID: 0}
 --- !u!1001 &1198235846385050045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -540,7 +524,7 @@ PrefabInstance:
     - target: {fileID: 187123710581426540, guid: 566299dfb79fd459ab62ee287988cd5d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 187123710581426540, guid: 566299dfb79fd459ab62ee287988cd5d,
         type: 3}

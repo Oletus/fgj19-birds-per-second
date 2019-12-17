@@ -20,9 +20,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_PositionSelect.PlacedObject == null)
+        if (_PositionSelect.ObjectBeingPlaced == null)
         {
-            _PositionSelect.PlacedObject = _ObjectQueue.ObtainNext();
+            _PositionSelect.ObjectBeingPlaced = _ObjectQueue.ObtainNext();
         }
     }
 }

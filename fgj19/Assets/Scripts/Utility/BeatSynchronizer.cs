@@ -60,12 +60,9 @@ public class BeatSynchronizer : MonoBehaviour
     public void PlayOnNextBeat(AudioSource source, bool loop, OnBeatCallbackFunction onBeatCallback = null)
     {
         source.loop = loop;
+        RemoveNonPlayingSounds();
         var playingSound = new PlayingSound(source, onBeatCallback);
         PlayingSounds.Add(playingSound);
-        if ( SyncBasis != null && !SyncBasis.isPlaying )
-        {
-            SyncBasis = null;
-        }
         if ( SyncBasis == null )
         {
             StartSyncing(playingSound);
@@ -76,21 +73,23 @@ public class BeatSynchronizer : MonoBehaviour
         playingSound.PlayScheduled(AudioSettings.dspTime + AudioSyncBeatIntervalSeconds - offsetFromBeat);
     }
 
-    private void Update()
+    public void Stop(AudioSource source)
     {
-        int i = 0;
-        while ( i < PlayingSounds.Count )
+        source.Stop();
+        for ( int i = 0; i < PlayingSounds.Count; ++i )
         {
             var sound = PlayingSounds[i];
-            if ( !sound.Source.isPlaying )
+            if ( sound.Source == source )
             {
-                PlayingSounds.Remove(sound);
-            }
-            else
-            {
-                ++i;
+                RemoveSoundFromIndex(i);
+                return;
             }
         }
+    }
+
+    private void Update()
+    {
+        RemoveNonPlayingSounds();
         OnBeatCallbacks();
     }
 
@@ -112,6 +111,49 @@ public class BeatSynchronizer : MonoBehaviour
         {
             sound.Source.loop = false;
         }
+    }
+
+    public void ResetToInitial()
+    {
+        foreach ( var sound in PlayingSounds )
+        {
+            sound.Source.Stop();
+        }
+        PlayingSounds.Clear();
         SyncBasis = null;
+    }
+
+    private void RemoveSoundFromIndex(int index)
+    {
+        AudioSource source = PlayingSounds[index].Source;
+        PlayingSounds.RemoveAt(index);
+        if ( SyncBasis == source )
+        {
+            if ( PlayingSounds.Count == 0 )
+            {
+                SyncBasis = null;
+            }
+            else
+            {
+                SyncBasis = PlayingSounds[0].Source;
+            }
+        }
+    }
+
+    private void RemoveNonPlayingSounds()
+    {
+        int i = 0;
+        while ( i < PlayingSounds.Count )
+        {
+            var sound = PlayingSounds[i];
+            if ( !sound.Source.isPlaying )
+            {
+                RemoveSoundFromIndex(i);
+            }
+            else
+            {
+                ++i;
+            }
+        }
     }
 }
